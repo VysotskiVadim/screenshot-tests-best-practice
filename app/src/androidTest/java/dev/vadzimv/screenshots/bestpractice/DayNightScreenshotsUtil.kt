@@ -15,7 +15,7 @@ import com.facebook.testing.screenshot.internal.TestNameDetector
 import com.karumi.shot.ActivityScenarioUtils.waitForActivity
 import com.karumi.shot.ScreenshotTest
 
-fun viewDayNightScreenshotTest(
+fun compareDayNightScreenshots(
     @LayoutRes viewId: Int,
     @StyleRes theme: Int = R.style.Theme_Screenshottestsbestpractice,
     setupView: (View) -> Unit
@@ -38,7 +38,7 @@ fun viewDayNightScreenshotTest(
 
     val nightView = LayoutInflater.from(nightModeWrapper).inflate(viewId, null, false)
     runOnMainSync { setupView(nightView) }
-    Screenshot.snap(nightView).setName(screenshotName("day")).record()
+    Screenshot.snap(nightView).setName(screenshotName("night")).record()
 }
 
 fun <T : AppCompatActivity> ScreenshotTest.compareDayNightScreenshots(
