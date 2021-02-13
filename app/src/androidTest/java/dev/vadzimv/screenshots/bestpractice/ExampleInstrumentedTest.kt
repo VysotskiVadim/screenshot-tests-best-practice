@@ -1,6 +1,9 @@
+import androidx.appcompat.widget.Toolbar
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.facebook.testing.screenshot.ViewHelpers
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.karumi.shot.ScreenshotTest
 import dev.vadzimv.screenshots.bestpractice.R
 import dev.vadzimv.screenshots.bestpractice.ScrollingActivity
@@ -18,7 +21,7 @@ class ExampleInstrumentedTest : ScreenshotTest {
     }
 
     @Test
-    fun viewScreenshotTest() = compareDayNightScreenshots(R.layout.activity_scrolling) {
-        ViewHelpers.setupView(it).setExactWidthPx(800).setExactHeightPx(3000).layout()
+    fun viewScreenshotTest() = compareDayNightScreenshots(R.layout.content_scrolling) {
+        ViewHelpers.setupView(it).setExactWidthPx(800).setExactHeightPx(4000).layout()
     }
 }
