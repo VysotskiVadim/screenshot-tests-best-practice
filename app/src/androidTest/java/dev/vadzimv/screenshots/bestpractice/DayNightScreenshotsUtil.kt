@@ -44,12 +44,13 @@ fun compareDayNightScreenshots(
 fun <T : AppCompatActivity> ScreenshotTest.compareDayNightScreenshots(
     activityScenario: ActivityScenario<T>
 ) {
-    val activity = activityScenario.waitForActivity()
-    compareScreenshot(activity, name = screenshotName("day"))
-    activity.runOnUiThread {
-        activity.delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+    val dayActivity = activityScenario.waitForActivity()
+    compareScreenshot(dayActivity, name = screenshotName("day"))
+    dayActivity.runOnUiThread {
+        dayActivity.delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
     }
-    compareScreenshot(activityScenario.waitForActivity(), name = screenshotName("night"))
+    val nightActivity = activityScenario.waitForActivity()
+    compareScreenshot(nightActivity, name = screenshotName("night"))
 }
 
 private fun runOnMainSync(block: () -> Unit) =
