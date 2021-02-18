@@ -28,11 +28,12 @@ fun compareDayNightScreenshots(
     runOnMainSync { setupView(dayView) }
     Screenshot.snap(dayView).setName(screenshotName("day")).record()
 
-    val conf = Configuration(context.resources.configuration)
-    conf.uiMode =
-        Configuration.UI_MODE_NIGHT_YES or (conf.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv())
+    val nightConfiguration = Configuration(context.resources.configuration)
+    nightConfiguration.uiMode =
+        Configuration.UI_MODE_NIGHT_YES or (nightConfiguration.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv())
+    val nightContext = context.createConfigurationContext(nightConfiguration)
     val nightModeWrapper = ContextThemeWrapper(
-        context.createConfigurationContext(conf),
+        nightContext,
         theme
     )
 
